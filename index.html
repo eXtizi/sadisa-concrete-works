@@ -35,6 +35,7 @@ function viewProduct(imageSrc, price) {
         localStorage.setItem("productPrice", price);
         window.location.href = "product-details.html";
       }
+      
     </script>
     
 <style>
@@ -90,6 +91,29 @@ function viewProduct(imageSrc, price) {
 .text-overlay a {
   margin: 0 10px;
 }
+#chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1000; /* Ensure it is above other elements */
+  }
+
+  #chat-button img {
+    width: 40px;
+    height: 40px;
+  }
+
+  #chat-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
 
 /* Media Query for Responsiveness */
 @media (max-width: 768px) {
@@ -154,7 +178,14 @@ function viewProduct(imageSrc, price) {
             <nav class="nav-main-menu">
               <ul class="main-menu">
                 <li><a class="btn btn-primary btn-lg"href="index.html">Home</a></li>
-                <li><a href="shop-grid.html">Shop</a></li>
+                <li><a href="shop-grid.html">Shop</a>
+                  <ul class="sub-menu two-col">
+                    <li><a href="shop-grid.html#lampposts-section" >Lampposts</a></li>
+                    <li><a href="shop-grid.html#table&chairs-section">Table & Chairs </a></li>
+                    <li><a href="shop-grid.html#flowerpots-section">Flower Pots</a></li>
+                    <li><a href="shop-grid.html#waterlilies-section">Water Lilies</a></li>
+                  </ul>
+                </li>
                 <li><a href="page-about-us.html">About Us</a></li>
                 <li><a href="#footer-section" >Contact Us</a></li>
               </ul>
@@ -164,6 +195,13 @@ function viewProduct(imageSrc, price) {
       </div>
     </header>
     <main class="main">
+      <div id="chat-button">
+        <a href="https://wa.link/wblc4l" target="_blank">
+          <img src="assets/imgs/icon.png" alt="Chat with us" />
+        </a>
+      </div>
+        
+      
       <section class="swiper-container">
         <div class="swiper-wrapper">
           <!-- Slides -->
@@ -193,8 +231,11 @@ function viewProduct(imageSrc, price) {
         max-width: 600px;
         margin: 20px auto;
         text-align: center;">
-          <h1 style="color: #000000; font-size: 2.5em; text-align: center; margin-bottom: 10px;">
-            Welcome to Sadisa Concrete Works
+          <h2 style="color: #000000; font-size: 2.0em; text-align: center; margin-bottom: 10px;">
+            Welcome to 
+          </h2>
+          <h1 style="color: #000000; font-size: 3.0em; text-align: center; margin-bottom: 10px;">
+            Sadisa Concrete Works
           </h1>
           <p style="color: #000000; font-size: 1.2em; text-align: center; line-height: 1.5; margin-bottom: 20px;">
             Delivering the best concrete solutions for your needs. Explore our wide range of high-quality products that blend durability with style.
@@ -307,13 +348,11 @@ function viewProduct(imageSrc, price) {
               <h4 class="mb-30 color-gray-1000">Contact</h4>
               <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">Address:</strong> No. 23 , Atawala ,Induruwa</div>
               <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">Phone:</strong> 0762185239
-                / 0342275601
-                0769168815</div>
+                / 0342275601</div>
               <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">E-mail:</strong> sadisaharshana1@gmail.com
               </div>
-              <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">Hours:</strong> 8:00 - 17:00, Everyday</div>
-              <div class="mt-30"><a class="icon-socials icon-twitter" href="https://wa.link/wblc4l"></a></div>
-            </div>  
+              <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">Hours:</strong> 6:00 - 20:00, Everyday</div>
+              </div>  
         </div>
       </div> 
     </footer>
