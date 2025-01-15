@@ -11,6 +11,130 @@
     <meta name="author" content="">
     <link href="assets/css/style.css?v=3.0.0" rel="stylesheet">
     <title>Sadisa Concrete Works</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+});
+
+// Function to handle product clicks
+function viewProduct(imageSrc, price) {
+        localStorage.setItem("productImage", imageSrc);
+        localStorage.setItem("productPrice", price);
+        window.location.href = "product-details.html";
+      }
+    </script>
+    
+<style>
+  /* Swiper Container */
+.swiper-container {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* Make height responsive */
+  overflow: hidden;
+}
+
+/* Make the swiper images responsive */
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Adjust the welcome text overlay */
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10; /* Higher than the slider */
+  color: #000000; /* Ensure text is visible on images */
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+/* Responsive adjustments for text overlay */
+.text-overlay h1 {
+  color: #000000;
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.text-overlay p {
+  color: #000000;
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.text-overlay a {
+  margin: 0 10px;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+  .swiper-container {
+    height: 70vh; /* Adjust height for smaller screens */
+  }
+
+  .text-overlay {
+    max-width: 80%; /* Adjust width for smaller screens */
+    padding: 15px;
+  }
+
+  .text-overlay h1 {
+    font-size: 1.8em; /* Adjust font size */
+  }
+
+  .text-overlay p {
+    font-size: 1.0em; /* Adjust font size */
+  }
+
+  .text-overlay a {
+    font-size: 0.9em; /* Adjust font size for buttons */
+  }
+}
+
+@media (max-width: 480px) {
+  .text-overlay {
+    max-width: 90%; /* Further reduce width for very small screens */
+    padding: 10px;
+  }
+
+  .text-overlay h1 {
+    font-size: 1.5em; /* Adjust font size for very small screens */
+  }
+
+  .text-overlay p {
+    font-size: 0.9em; /* Adjust font size for very small screens */
+  }
+
+  .text-overlay a {
+    font-size: 0.8em; /* Adjust font size for very small screens */
+  }
+}
+
+</style>
   </head>
   <body>
     <div id="preloader-active">
@@ -40,11 +164,42 @@
       </div>
     </header>
     <main class="main">
-      <section class="section-box text-center bg-light pt-5 pb-5">
-        <div class="container">
-          <h1 class="display-4 font-weight-bold mb-3">Welcome to Sadisa Concrete Works</h1>
-          <p class="lead text-muted mb-4">Delivering the best concrete solutions for your needs. Explore our wide range of high-quality products that blend durability with style.</p>
-          <a href="shop-grid.html" class="btn btn-primary btn-lg mr-3">Shop Now</a>
+      <section class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <img src="assets/imgs/m1.jpeg" alt="Slide 1">
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/imgs/m2.jpeg" alt="Slide 2">
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/imgs/m9.jpeg" alt="Slide 3">
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      
+        <!-- Welcome Text Overlay -->
+        <div class="text-overlay" style="
+        background-color: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(5px);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: center;">
+          <h1 style="color: #000000; font-size: 2.5em; text-align: center; margin-bottom: 10px;">
+            Welcome to Sadisa Concrete Works
+          </h1>
+          <p style="color: #000000; font-size: 1.2em; text-align: center; line-height: 1.5; margin-bottom: 20px;">
+            Delivering the best concrete solutions for your needs. Explore our wide range of high-quality products that blend durability with style.
+          </p>
+          <a href="shop-grid.html" class="btn btn-primary btn-lg">Shop Now</a>
           <a href="page-about-us.html" class="btn btn-outline-secondary btn-lg">Learn More</a>
         </div>
       </section>
@@ -68,7 +223,7 @@
                   <div class="card-grid-inner">
                     <div class="tools"></div>
                     <div class="info-right">
-                      <div class="rating"><img src="assets/imgs/35.jpeg" alt="Ecom"></div>
+                      <div class="rating" onclick="viewProduct('assets/imgs/35.jpeg', '35000 LKR')"><img src="assets/imgs/35.jpeg" alt="Ecom"></div>
                       <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">35000 LKR</strong></div>
                       
                     </div>
@@ -78,7 +233,7 @@
                   <div class="card-grid-inner">
                     <div class="tools"></div>
                     <div class="info-right">
-                      <div class="rating"><img src="assets/imgs/24.jpeg" alt="Ecom"></div>
+                      <div class="rating" onclick="viewProduct('assets/imgs/24.jpeg', '2200 LKR')"><img src="assets/imgs/24.jpeg" alt="Ecom"></div>
                       <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2200 LKR</strong></div>
                       </div>
                   </div>
@@ -87,7 +242,7 @@
                   <div class="card-grid-inner">
                     <div class="tools"></div>
                     <div class="info-right">
-                      <div class="rating"><img src="assets/imgs/31.jpeg" alt="Ecom"></div>
+                      <div class="rating" onclick="viewProduct('assets/imgs/31.jpeg', '17000 LKR')"><img src="assets/imgs/31.jpeg" alt="Ecom"></div>
                       <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">17000 LKR</strong></div>
                       </div>
                   </div>
@@ -96,7 +251,7 @@
                   <div class="card-grid-inner">
                     <div class="tools"></div>
                     <div class="info-right">
-                      <div class="rating"><img src="assets/imgs/1.jpeg" alt="Ecom"></div>
+                      <div class="rating" onclick="viewProduct('assets/imgs/1.jpeg', '6500 LKR')"><img src="assets/imgs/1.jpeg" alt="Ecom"></div>
                       <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">6500 LKR</strong></div>
                      </div>
                   </div>
@@ -105,7 +260,7 @@
                   <div class="card-grid-inner">
                     <div class="tools"></div>
                     <div class="info-right">
-                      <div class="rating"><img src="assets/imgs/39.jpeg" alt="Ecom"></div>
+                      <div class="rating" onclick="viewProduct('assets/imgs/39.jpeg', '2000 LKR')"><img src="assets/imgs/39.jpeg" alt="Ecom"></div>
                       <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2000 LKR</strong></div>
                       </div>
                   </div>
@@ -185,3 +340,6 @@
     <script src="assets/js/shop.js?v=1.2.1"></script>
   </body>
 </html>
+
+
+
