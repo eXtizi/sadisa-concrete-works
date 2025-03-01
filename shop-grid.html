@@ -43,6 +43,16 @@
         localStorage.setItem("productPrice", price);
         window.location.href = "product-details.html";
       }
+      function lamppost1(imageSrc, price) {
+        localStorage.setItem("productImage", imageSrc);
+        localStorage.setItem("productPrice", price);
+        window.location.href = "lamport1.html";
+      }
+      function lamppost2(imageSrc, price) {
+        localStorage.setItem("productImage", imageSrc);
+        localStorage.setItem("productPrice", price);
+        window.location.href = "lamport2.html";
+      }
     </script>
   </head>
   <body>
@@ -105,7 +115,7 @@
                   <div class="card-grid-inner">
                     <div class="tools"></div>
                     <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/49.jpeg' ,'8500 LKR')"><img src="assets/imgs/49.jpeg" alt="Ecom"></div>
+                      <div class="rating" onclick="lamppost1('assets/imgs/49.jpeg' ,'8500 LKR')"><img src="assets/imgs/49.jpeg" alt="Ecom"></div>
                       <div class="price-info"><strong class="font-lg-light color-brand-3 ">Height: 4.5ft</strong></div>
                       <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">8500 LKR</strong></div>
                      
@@ -116,7 +126,7 @@
                   <div class="card-grid-inner">
                     <div class="tools"></div>
                     <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/50.jpeg', '8000 LKR' )"><img src="assets/imgs/50.jpeg" alt="Ecom"></div>
+                      <div class="rating" onclick="lamppost2('assets/imgs/50.jpeg', '8000 LKR' )"><img src="assets/imgs/50.jpeg" alt="Ecom"></div>
                       <div class="price-info"><strong class="font-lg-light color-brand-3 ">Height: 4ft</strong></div>
                       <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">8000 LKR</strong></div>
                      
