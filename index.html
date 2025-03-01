@@ -91,20 +91,23 @@ function viewProduct(imageSrc, price) {
 .text-overlay a {
   margin: 0 10px;
 }
-#chat-button {
+#chat-buttons {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
     display: flex;
+    gap: 10px; /* Space between icons */
     align-items: center;
-    justify-content: center;
+    z-index: 1000;
+}
+
+#chat-buttons a img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    z-index: 1000; /* Ensure it is above other elements */
-  }
+}
 
   #chat-button img {
     width: 40px;
@@ -195,10 +198,15 @@ function viewProduct(imageSrc, price) {
       </div>
     </header>
     <main class="main">
-      <div id="chat-button">
+      <div id="chat-buttons">
         <a href="https://wa.link/wblc4l" target="_blank">
           <img src="assets/imgs/icon.png" alt="Chat with us" />
         </a>
+
+        <!-- Google Maps Button -->
+  <a href="https://www.google.com/maps?q=Your+Shop+Latitude,Your+Shop+Longitude" target="_blank">
+    <img src="assets/imgs/map.jpg" alt="View Location" />
+  </a>
       </div>
         
       
