@@ -52,7 +52,7 @@
     document.addEventListener("DOMContentLoaded", () => {
       const imageSrc = localStorage.getItem("productImage");
       const price = localStorage.getItem("productPrice");
-
+      
       if (imageSrc && price) {
         document.getElementById("product-image").src = imageSrc;
         document.getElementById("product-price").innerText = price;

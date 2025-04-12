@@ -53,6 +53,12 @@
         localStorage.setItem("productPrice", price);
         window.location.href = "lamport2.html";
       }
+      function viewProductWithVideo(imageSrc,videoSrc, price) {
+        localStorage.setItem("productImage", imageSrc);
+        localStorage.setItem("productVideo", videoSrc);
+        localStorage.setItem("productPrice", price);
+        window.location.href = "product-details-video.html";
+      }
     </script>
   </head>
   <body>
@@ -78,7 +84,7 @@
                     <li><a href="shop-grid.html#lampposts-section" >Lampposts</a></li>
                     <li><a href="shop-grid.html#table&chairs-section">Table & Chairs </a></li>
                     <li><a href="shop-grid.html#flowerpots-section">Flower Pots</a></li>
-                    <li><a href="shop-grid.html#waterlilies-section">Water Lilies</a></li>
+                    <li><a href="shop-grid.html#waterflowers-section">Water Flowers</a></li>
                   </ul>
                 </li>
                 <li><a href="page-about-us.html">About Us</a></li>
@@ -361,7 +367,7 @@
           </div>
         </div>
       </section>
-      <section class="section-box bg-gray-50 pt-50 pb-50 mt-50">
+      <section class="section-box bg-gray-50 pt-50 pb-50 mt-50" id="waterflowers-section">
         <div class="container">
           <div class="head-main bd-gray-200">
             <div class="row">
@@ -381,7 +387,7 @@
                   <div class="card-grid-inner">
                     <div class="tools"></div>
                     <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/wf1.jpg', '18000 LKR')"><img src="assets/imgs/wf1.jpg" alt="Ecom"></div>
+                      <div class="rating" onclick="viewProductWithVideo('assets/imgs/wf1.jpg','assets/vids/fp1.mp4', '18000 LKR')"><img src="assets/imgs/wf1.jpg" alt="Ecom"></div>
                       <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">18000 LKR</strong></div>
                      </div>
                   </div>
@@ -390,7 +396,7 @@
                   <div class="card-grid-inner">
                     <div class="tools"></div>
                     <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/wf2.jpg', '15000 LKR')"><img src="assets/imgs/wf2.jpg" alt="Ecom"></div>
+                      <div class="rating" onclick="viewProductWithVideo('assets/imgs/wf2.jpg','assets/vids/fp1.mp4', '15000 LKR')"><img src="assets/imgs/wf2.jpg" alt="Ecom"></div>
                       <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">15000 LKR</strong></div>
                       </div>
                   </div>
