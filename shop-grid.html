@@ -38,9 +38,14 @@
     </style>
     <script>
       // Function to handle product clicks
-      function viewProduct(imageSrc, price) {
+      function viewProduct(imageSrc, price, secondaryImageSrc = null) {
         localStorage.setItem("productImage", imageSrc);
         localStorage.setItem("productPrice", price);
+        if (secondaryImageSrc) {
+          localStorage.setItem("secondaryProductImage", secondaryImageSrc);
+        } else {
+          localStorage.removeItem("secondaryProductImage");
+        }
         window.location.href = "product-details.html";
       }
       function lamppost1(imageSrc, price) {
@@ -109,142 +114,91 @@
                 <h3 class="mb-5">Lampposts</h3>
                 <p class="font-base color-gray-500">Special products in this month.</p>
               </div>
-              <div class="col-xl-5 col-lg-6">
-                
-              </div>
+              <div class="col-xl-5 col-lg-6"></div>
             </div>
           </div>
           <div class="tab-content">
             <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
               <div class="list-products-5">
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="lamppost1('assets/imgs/49.jpeg' ,'8500 LKR')"><img src="assets/imgs/49.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-light color-brand-3 ">Height: 4.5ft</strong></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">8500 LKR</strong></div>
-                     
-                    </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="lamppost2('assets/imgs/50.jpeg', '8000 LKR' )"><img src="assets/imgs/50.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-light color-brand-3 ">Height: 4ft</strong></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">8000 LKR</strong></div>
-                     
-                    </div>
-                  </div>
-                </div>
-                
+                <script>
+                  const lampposts = [
+                    { imgSrc: 'assets/imgs/49.jpeg', price: '8500 LKR', height: '4.5ft', onClick: "lamppost1('assets/imgs/49.jpeg', '8500 LKR')" },
+                    { imgSrc: 'assets/imgs/50.jpeg', price: '8000 LKR', height: '4ft', onClick: "lamppost2('assets/imgs/50.jpeg', '8000 LKR')" }
+                  ];
+
+                  lampposts.forEach(product => {
+                    document.write(`
+                      <div class="card-grid-style-3">
+                        <div class="card-grid-inner">
+                          <div class="tools"></div>
+                          <div class="info-right">
+                            <div class="rating" onclick="${product.onClick}">
+                              <img src="${product.imgSrc}" alt="Ecom">
+                            </div>
+                            <div class="price-info">
+                              <strong class="font-lg-light color-brand-3">Height: ${product.height}</strong>
+                            </div>
+                            <div class="price-info">
+                              <strong class="font-lg-bold color-brand-3 price-main">${product.price}</strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    `);
+                  });
+                </script>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
       </section>
       <section class="section-box bg-gray-50 pt-50 pb-50 mt-50" id="tables&chairs-section">
         <div class="container">
           <div class="head-main bd-gray-200">
-        <div class="row">
-          <div class="col-xl-7 col-lg-6">
-            <h3 class="mb-5">Table & Chairs</h3>
-            <p class="font-base color-gray-500">Special products in this month.</p>
-          </div>
-          <div class="col-xl-5 col-lg-6">
-            
-          </div>
-        </div>
+            <div class="row">
+              <div class="col-xl-7 col-lg-6">
+                <h3 class="mb-5">Table & Chairs</h3>
+                <p class="font-base color-gray-500">Special products in this month.</p>
+              </div>
+              <div class="col-xl-5 col-lg-6"></div>
+            </div>
           </div>
           <div class="tab-content">
-        <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
-          <div class="list-products-5">
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/35.jpeg', '35000 LKR')"><img src="assets/imgs/35.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">35000 LKR</strong></div>
-              
-            </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/29.jpeg', '24000 LKR')"><img src="assets/imgs/29.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">24000 LKR</strong></div>
+            <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
+              <div class="list-products-5">
+                <script>
+                  const tablesAndChairs = [
+                    { imgSrc: 'assets/imgs/35.jpeg', price: '35000 LKR', secondaryImgSrc: 'assets/imgs/t1.jpg' },
+                    { imgSrc: 'assets/imgs/29.jpeg', price: '24000 LKR' },
+                    { imgSrc: 'assets/imgs/31.jpeg', price: '17000 LKR' },
+                    { imgSrc: 'assets/imgs/32.jpeg', price: '9500 LKR' },
+                    { imgSrc: 'assets/imgs/44.jpeg', price: '7000 LKR' },
+                    { imgSrc: 'assets/imgs/c1.jpg', price: '8000 LKR' },
+                    { imgSrc: 'assets/imgs/c2.jpg', price: '8500 LKR' },
+                    { imgSrc: 'assets/imgs/c3.jpg', price: '4500 LKR' },
+                    { imgSrc: 'assets/imgs/c4.jpg', price: '4500 LKR' }
+                  ];
+
+                  tablesAndChairs.forEach(product => {
+                    document.write(`
+                      <div class="card-grid-style-3">
+                        <div class="card-grid-inner">
+                          <div class="tools"></div>
+                          <div class="info-right">
+                            <div class="rating" onclick="viewProduct('${product.imgSrc}', '${product.price}', '${product.secondaryImgSrc || null}')">
+                              <img src="${product.imgSrc}" alt="Ecom">
+                            </div>
+                            <div class="price-info">
+                              <strong class="font-lg-bold color-brand-3 price-main">${product.price}</strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    `);
+                  });
+                </script>
               </div>
-          </div>
             </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/31.jpeg', '17000 LKR')"><img src="assets/imgs/31.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">17000 LKR</strong></div>
-              </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/32.jpeg', '9500 LKR')"><img src="assets/imgs/32.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">9500 LKR</strong></div>
-             </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/44.jpeg', '7000 LKR')"><img src="assets/imgs/44.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">7000 LKR</strong></div>
-              </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/c1.jpg', '8000 LKR')"><img src="assets/imgs/c1.jpg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">8000 LKR</strong></div>
-              </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/c2.jpg', '8500 LKR')"><img src="assets/imgs/c2.jpg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">8500 LKR</strong></div>
-              </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/c3.jpg', '4500 LKR')"><img src="assets/imgs/c3.jpg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">4500 LKR</strong></div>
-              </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/c4.jpg', '4500 LKR')"><img src="assets/imgs/c4.jpg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">4500 LKR</strong></div>
-              </div>
-          </div>
-            </div>
-          </div>
-        </div>  
           </div>
         </div>
       </section>
@@ -257,203 +211,57 @@
                 <h3 class="mb-5">Flower Pots</h3>
                 <p class="font-base color-gray-500">Special products in this month.</p>
               </div>
-              <div class="col-xl-5 col-lg-6">
-                
-              </div>
+              <div class="col-xl-5 col-lg-6"></div>
             </div>
           </div>
           <div class="tab-content">
             <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
               <div class="list-products-5">
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/fp1.jpg', '2200 LKR')"><img src="assets/imgs/fp1.jpg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2200 LKR</strong></div>
-                      
-                    </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/1.jpeg', '6500 LKR')"><img src="assets/imgs/1.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">6500 LKR</strong></div>
-                      
-                    </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/5.jpeg', '2200 LKR')"><img src="assets/imgs/5.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2200 LKR</strong></div>
-                      </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/23.jpeg', '1200 LKR')"><img src="assets/imgs/23.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">1200 LKR</strong></div>
-                      </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/26.jpeg', '1500 LKR')"><img src="assets/imgs/26.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">1500 LKR</strong></div>
-                     </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/27.jpeg', '2200 LKR')"><img src="assets/imgs/27.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2200 LKR</strong></div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>  
-  
-        <div class="row">
-
-          <div class="col-xl-5 col-lg-6">
-            
-          </div>
-        </div>
-          </div>
-          <div class="tab-content">
-        <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
-          <div class="list-products-5">
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/12.jpeg', '1000 LKR')"><img src="assets/imgs/12.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">1000 LKR</strong></div>
-            </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/fp2.jpg', '2000 LKR')"><img src="assets/imgs/fp2.jpg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2000 LKR</strong></div>
-            </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/37.jpeg', '3800 LKR')"><img src="assets/imgs/37.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">3800 LKR</strong></div>
-            </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/39.jpeg', '2500 LKR')"><img src="assets/imgs/39.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2500 LKR</strong></div>
-            </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/42.jpeg', '2500 LKR')"><img src="assets/imgs/42.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2500 LKR</strong></div>
-            </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/7.jpeg', '1800 LKR')"><img src="assets/imgs/7.jpeg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">1800 LKR</strong></div>
-            </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/fp3.jpg', '1200 LKR')"><img src="assets/imgs/fp3.jpg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">1200 LKR</strong></div>
-            </div>
-          </div>
-            </div>
-          <div class="card-grid-style-3">
-          <div class="card-grid-inner">
-            <div class="tools"></div>
-            <div class="info-right">
-              <div class="rating" onclick="viewProduct('assets/imgs/fp4.jpg', '1200 LKR')"><img src="assets/imgs/fp4.jpg" alt="Ecom"></div>
-              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">1200 LKR</strong></div>
-            </div>
-          </div>
-            </div>
-            <div class="card-grid-style-3">
-              <div class="card-grid-inner">
-                <div class="tools"></div>
-                <div class="info-right">
-                  <div class="rating" onclick="viewProduct('assets/imgs/9.jpeg', '2000 LKR')"><img src="assets/imgs/9.jpeg" alt="Ecom"></div>
-                  <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2000 LKR</strong></div>
+                <script>
+                  const flowerPots = [
+               
+                    { imgSrc: 'assets/imgs/1.jpeg', price: '6500 LKR', secondaryImgSrc: 'assets/imgs/fp12.jpg' },
+                    { imgSrc: 'assets/imgs/5.jpeg', price: '2200 LKR' },
+                    { imgSrc: 'assets/imgs/23.jpeg', price: '1200 LKR', secondaryImgSrc: 'assets/imgs/fp5.jpg' },
+                    { imgSrc: 'assets/imgs/26.jpeg', price: '1500 LKR' },
+                    { imgSrc: 'assets/imgs/27.jpeg', price: '2200 LKR', secondaryImgSrc: 'assets/imgs/fp1.jpg' },
+                    { imgSrc: 'assets/imgs/12.jpeg', price: '1000 LKR' },
+                    { imgSrc: 'assets/imgs/fp2.jpg', price: '2000 LKR', secondaryImgSrc: 'assets/imgs/fp14.jpg' },
+                    { imgSrc: 'assets/imgs/37.jpeg', price: '3800 LKR', secondaryImgSrc: 'assets/imgs/fp13.jpg' },
+                    { imgSrc: 'assets/imgs/39.jpeg', price: '2500 LKR', secondaryImgSrc: 'assets/imgs/fp15.jpg' },
+                    { imgSrc: 'assets/imgs/42.jpeg', price: '2500 LKR', secondaryImgSrc: 'assets/imgs/fp16.jpg' },
+                    { imgSrc: 'assets/imgs/7.jpeg', price: '1800 LKR', secondaryImgSrc: 'assets/imgs/fp11.jpg' },
+                    { imgSrc: 'assets/imgs/fp3.jpg', price: '1200 LKR', secondaryImgSrc: 'assets/imgs/fp17.jpg' },
+                    { imgSrc: 'assets/imgs/fp4.jpg', price: '1200 LKR', secondaryImgSrc: 'assets/imgs/fp18.jpg' },
+                    { imgSrc: 'assets/imgs/9.jpeg', price: '2000 LKR', secondaryImgSrc: 'assets/imgs/fp10.jpg' },
+                    { imgSrc: 'assets/imgs/14.jpeg', price: '650 LKR' },
+                    { imgSrc: 'assets/imgs/13.jpeg', price: '1400 LKR', secondaryImgSrc: 'assets/imgs/fp9.jpg' },
+                    { imgSrc: 'assets/imgs/25.jpeg', price: '1500 LKR' },
+                    { imgSrc: 'assets/imgs/fp7.jpg', price: '500 LKR', secondaryImgSrc: 'assets/imgs/fp8.jpg' },
+                    { imgSrc: 'assets/imgs/fp6.jpg', price: '1000 LKR', secondaryImgSrc: 'assets/imgs/18.jpeg' }
                   
-                </div>
+                  ];
+
+                  flowerPots.forEach(product => {
+                    document.write(`
+                      <div class="card-grid-style-3">
+                        <div class="card-grid-inner">
+                          <div class="tools"></div>
+                          <div class="info-right">
+                            <div class="rating" onclick="viewProduct('${product.imgSrc}', '${product.price}', '${product.secondaryImgSrc || null}')">
+                              <img src="${product.imgSrc}" alt="Ecom">
+                            </div>
+                            <div class="price-info">
+                              <strong class="font-lg-bold color-brand-3 price-main">${product.price}</strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    `);
+                  });
+                </script>
               </div>
             </div>
-            <div class="card-grid-style-3">
-              <div class="card-grid-inner">
-                <div class="tools"></div>
-                <div class="info-right">
-                  <div class="rating" onclick="viewProduct('assets/imgs/14.jpeg', '650 LKR')"><img src="assets/imgs/14.jpeg" alt="Ecom"></div>
-                  <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">650 LKR</strong></div>
-                  </div>
-              </div>
-            </div>
-            <div class="card-grid-style-3">
-              <div class="card-grid-inner">
-                <div class="tools"></div>
-                <div class="info-right">
-                  <div class="rating" onclick="viewProduct('assets/imgs/13.jpeg', '1400 LKR')"><img src="assets/imgs/13.jpeg" alt="Ecom"></div>
-                  <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">1400 LKR</strong></div>
-                  </div>
-              </div>
-            </div>
-            <div class="card-grid-style-3">
-              <div class="card-grid-inner">
-                <div class="tools"></div>
-                <div class="info-right">
-                  <div class="rating" onclick="viewProduct('assets/imgs/25.jpeg', '1500 LKR')"><img src="assets/imgs/25.jpeg" alt="Ecom"></div>
-                  <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">1500 LKR</strong></div>
-                 </div>
-              </div>
-            </div>
-            <div class="card-grid-style-3">
-              <div class="card-grid-inner">
-                <div class="tools"></div>
-                <div class="info-right">
-                  <div class="rating" onclick="viewProduct('assets/imgs/18.jpeg', '1000 LKR')"><img src="assets/imgs/18.jpeg" alt="Ecom"></div>
-                  <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">1000 LKR</strong></div>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>  
           </div>
         </div>
       </section>
@@ -461,39 +269,43 @@
       <section class="section-box bg-gray-50 pt-50 pb-50 mt-50" id="waterflowers-section">
         <div class="container">
           <div class="head-main bd-gray-200">
-            <div class="row">
-              <div class="col-xl-7 col-lg-6">
-                <h3 class="mb-5">Water Flowers</h3>
-                <p class="font-base color-gray-500">Special products in this month.</p>
-              </div>
-              <div class="col-xl-5 col-lg-6">
-                
-              </div>
-            </div>
+        <div class="row">
+          <div class="col-xl-7 col-lg-6">
+            <h3 class="mb-5">Water Flowers</h3>
+            <p class="font-base color-gray-500">Special products in this month.</p>
+          </div>
+          <div class="col-xl-5 col-lg-6"></div>
+        </div>
           </div>
           <div class="tab-content">
-            <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
-              <div class="list-products-5">                
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProductWithVideo('assets/imgs/wf1.jpg','assets/vids/fp1.mp4', '18000 LKR')"><img src="assets/imgs/wf1.jpg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">18000 LKR</strong></div>
-                     </div>
-                  </div>
+        <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
+          <div class="list-products-5">
+            <script>
+          const waterFlowers = [
+            { imgSrc: 'assets/imgs/wf1.jpg', videoSrc: 'assets/vids/fp1.mp4', price: '18000 LKR' },
+            { imgSrc: 'assets/imgs/wf2.jpg', videoSrc: 'assets/vids/fp1.mp4', price: '15000 LKR' }
+          ];
+
+          waterFlowers.forEach(product => {
+            document.write(`
+              <div class="card-grid-style-3">
+            <div class="card-grid-inner">
+              <div class="tools"></div>
+              <div class="info-right">
+                <div class="rating" onclick="viewProductWithVideo('${product.imgSrc}', '${product.videoSrc}', '${product.price}')">
+              <img src="${product.imgSrc}" alt="Ecom">
                 </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProductWithVideo('assets/imgs/wf2.jpg','assets/vids/fp1.mp4', '15000 LKR')"><img src="assets/imgs/wf2.jpg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">15000 LKR</strong></div>
-                      </div>
-                  </div>
+                <div class="price-info">
+              <strong class="font-lg-bold color-brand-3 price-main">${product.price}</strong>
                 </div>
               </div>
-            </div>  
+            </div>
+              </div>
+            `);
+          });
+            </script>
+          </div>
+        </div>
           </div>
         </div>
       </section>

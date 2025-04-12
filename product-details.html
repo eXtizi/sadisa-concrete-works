@@ -51,11 +51,21 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const imageSrc = localStorage.getItem("productImage");
+      const secondaryImageSrc = localStorage.getItem("secondaryProductImage");
       const price = localStorage.getItem("productPrice");
       
       if (imageSrc && price) {
         document.getElementById("product-image").src = imageSrc;
         document.getElementById("product-price").innerText = price;
+
+        if (secondaryImageSrc && secondaryImageSrc.length > 5) {
+          const secondaryImage = document.createElement("img");
+          secondaryImage.src = secondaryImageSrc;
+          secondaryImage.style.width = "80%";
+          secondaryImage.style.maxWidth = "600px";
+          secondaryImage.style.marginTop = "20px";
+          document.querySelector(".product-details").appendChild(secondaryImage);
+        }
       } else {
         document.body.innerHTML = "<p>Product not found!</p>";
       }
