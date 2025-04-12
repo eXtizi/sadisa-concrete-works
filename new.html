@@ -7,5 +7,16 @@
     <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
 </head>
 <body>
-    <spline-viewer url="https://prod.spline.design/AqtlWJlNbO-ZMkvz/scene.splinecode" events-target="global"></spline-viewer>
+    <spline-viewer id="splineViewer" url="https://prod.spline.design/AqtlWJlNbO-ZMkvz/scene.splinecode" events-target="global"></spline-viewer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const splineViewer = document.getElementById('splineViewer');
+            const logoElement = splineViewer.shadowRoot?.querySelector('#logo');
+            if (logoElement) {
+                logoElement.remove();
+            }
+        });
+    </script>
 </body>
+</html>
