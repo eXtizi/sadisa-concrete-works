@@ -269,13 +269,13 @@ function viewProduct(imageSrc, price, secondaryImageSrc = null) {
               </div>
               </div>
               <div class="tab-content">
-              <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
+                <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
                 <div class="list-products-5">
-                <ul class="product-list" id="product-list">
+                  <ul class="product-list" id="product-list" style="display: flex; flex-wrap: wrap; gap: 20px; list-style: none; padding: 0;">
                   <!-- Product List will be dynamically generated here -->
-                </ul>
+                  </ul>
                 </div>
-              </div>
+                </div>
         <script>
           const products = [
           { image: 'assets/imgs/35.jpeg', price: '35000 LKR', secondaryImage: 'assets/imgs/t1.jpg' },
@@ -295,13 +295,13 @@ function viewProduct(imageSrc, price, secondaryImageSrc = null) {
           listItem.setAttribute('onclick', `viewProduct('${product.image}', '${product.price}')`);
 
           listItem.innerHTML = `
-            <div class="card-grid-inner">
-            <div class="tools"></div>
+            
+            
             <div class="info-right">
               <div class="rating"><img src="${product.image}" alt="Ecom"></div>
               <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">${product.price}</strong></div>
             </div>
-            </div>
+            
           `;
 
           productList.appendChild(listItem);
