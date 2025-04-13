@@ -29,10 +29,14 @@
   });
 });
 
-// Function to handle product clicks
-function viewProduct(imageSrc, price) {
+function viewProduct(imageSrc, price, secondaryImageSrc = null) {
         localStorage.setItem("productImage", imageSrc);
         localStorage.setItem("productPrice", price);
+        if (secondaryImageSrc) {
+          localStorage.setItem("secondaryProductImage", secondaryImageSrc);
+        } else {
+          localStorage.removeItem("secondaryProductImage");
+        }
         window.location.href = "product-details.html";
       }
       
@@ -261,62 +265,48 @@ function viewProduct(imageSrc, price) {
                 <h3 class="mb-5">Top Products</h3>
                 <p class="font-base color-gray-500">Special products in this month.</p>
               </div>
-              <div class="col-xl-5 col-lg-6">
-                
+                <div class="col-xl-5 col-lg-6"></div>
               </div>
+              </div>
+              <div class="tab-content">
+              <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
+                <div class="list-products-5">
+                <ul class="product-list" id="product-list">
+                  <!-- Product List will be dynamically generated here -->
+                </ul>
+                </div>
+              </div>
+        <script>
+          const products = [
+          { image: 'assets/imgs/35.jpeg', price: '35000 LKR', secondaryImage: 'assets/imgs/t1.jpg' },
+          { image: 'assets/imgs/lp1.jpg', price: '10000 LKR - 4.5 FT' ,  secondaryImage: 'assets/imgs/lp2.jpg'},
+          { image: 'assets/imgs/48.jpeg', price: '8500 LKR - 4.5 FT',  secondaryImage: 'assets/imgs/49.jpeg' },
+          { image: 'assets/imgs/29.jpeg', price: '24000 LKR' },
+          { image: 'assets/imgs/31.jpeg', price: '17000 LKR' },
+          { image: 'assets/imgs/39.jpeg', price: '2500 LKR' },
+          { image: 'assets/imgs/13.jpeg', price: '1400 LKR' },
+          ];
+
+          const productList = document.getElementById('product-list');
+
+          products.forEach(product => {
+          const listItem = document.createElement('li');
+          listItem.className = 'card-grid-style-3';
+          listItem.setAttribute('onclick', `viewProduct('${product.image}', '${product.price}')`);
+
+          listItem.innerHTML = `
+            <div class="card-grid-inner">
+            <div class="tools"></div>
+            <div class="info-right">
+              <div class="rating"><img src="${product.image}" alt="Ecom"></div>
+              <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">${product.price}</strong></div>
             </div>
-          </div>
-          <div class="tab-content">
-            <div class="tab-pane fade active show" id="tab-2-all" role="tabpanel" aria-labelledby="tab-2-all">
-              <div class="list-products-5">
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/35.jpeg', '35000 LKR')"><img src="assets/imgs/35.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">35000 LKR</strong></div>
-                      
-                    </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/24.jpeg', '2200 LKR')"><img src="assets/imgs/24.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2200 LKR</strong></div>
-                      </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/31.jpeg', '17000 LKR')"><img src="assets/imgs/31.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">17000 LKR</strong></div>
-                      </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/1.jpeg', '6500 LKR')"><img src="assets/imgs/1.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">6500 LKR</strong></div>
-                     </div>
-                  </div>
-                </div>
-                <div class="card-grid-style-3">
-                  <div class="card-grid-inner">
-                    <div class="tools"></div>
-                    <div class="info-right">
-                      <div class="rating" onclick="viewProduct('assets/imgs/39.jpeg', '2000 LKR')"><img src="assets/imgs/39.jpeg" alt="Ecom"></div>
-                      <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">2000 LKR</strong></div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>  
+            </div>
+          `;
+
+          productList.appendChild(listItem);
+          });
+        </script>
           </div>
         </div>
       </section>
